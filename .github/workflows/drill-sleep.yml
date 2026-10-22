@@ -1,0 +1,17 @@
+name: CI Drill Sleep
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sleep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report start
+        run: echo "Drill run started at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+      - name: Long-running sleep
+        run: |
+          echo "Sleeping for 300 seconds so the drill has a long-running run to interrupt..."
+          sleep 300
+      - name: Report end
+        run: echo "Drill run finished at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
